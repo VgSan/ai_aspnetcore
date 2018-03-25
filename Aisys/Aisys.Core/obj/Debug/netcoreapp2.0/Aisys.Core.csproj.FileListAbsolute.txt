@@ -1,0 +1,7 @@
+E:\TSP\aisys mytest clone\ai_aspnetcore\Aisys\Aisys.Core\bin\Debug\netcoreapp2.0\Aisys.Core.deps.json
+E:\TSP\aisys mytest clone\ai_aspnetcore\Aisys\Aisys.Core\bin\Debug\netcoreapp2.0\Aisys.Core.dll
+E:\TSP\aisys mytest clone\ai_aspnetcore\Aisys\Aisys.Core\bin\Debug\netcoreapp2.0\Aisys.Core.pdb
+E:\TSP\aisys mytest clone\ai_aspnetcore\Aisys\Aisys.Core\obj\Debug\netcoreapp2.0\Aisys.Core.csprojResolveAssemblyReference.cache
+E:\TSP\aisys mytest clone\ai_aspnetcore\Aisys\Aisys.Core\obj\Debug\netcoreapp2.0\Aisys.Core.AssemblyInfo.cs
+E:\TSP\aisys mytest clone\ai_aspnetcore\Aisys\Aisys.Core\obj\Debug\netcoreapp2.0\Aisys.Core.dll
+E:\TSP\aisys mytest clone\ai_aspnetcore\Aisys\Aisys.Core\obj\Debug\netcoreapp2.0\Aisys.Core.pdb

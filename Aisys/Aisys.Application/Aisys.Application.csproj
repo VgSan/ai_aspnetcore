@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aisys.Core\Aisys.Core.csproj" />
+    <ProjectReference Include="..\Aisys.EFCore\Aisys.EFCore.csproj" />
+  </ItemGroup>
+
+</Project>
