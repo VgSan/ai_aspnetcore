@@ -35,8 +35,8 @@ namespace Aisys.Web.Host
 
         private Task<ClaimsIdentity> GetIdentity(string username, string password)
         {
-            // Don't do this in production, obviously!
-            if (username == "TEST" && password == "TEST123")
+            // Need to be check in DB
+            if (username == "test@test.com" && password == "test123")
             {
                 return Task.FromResult(new ClaimsIdentity(new GenericIdentity(username, "Token"), new Claim[] { }));
             }

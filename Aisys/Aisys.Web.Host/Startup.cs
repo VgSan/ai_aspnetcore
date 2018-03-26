@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.EntityFrameworkCore;
 using Aisys.EntityFrameworkCore;
 using AutoMapper;
 using Aisys.Application;
 using Microsoft.AspNetCore.Cors.Infrastructure;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Aisys.Web.Host.Authentication.JwtBearer;
@@ -88,7 +82,7 @@ namespace Aisys.Web.Host
             corsBuilder.AllowAnyMethod();
             corsBuilder.AllowAnyOrigin(); // For anyone access.
                                           //corsBuilder.WithOrigins("http://localhost:56573"); // for a specific url. Don't add a forward slash on the end!
-            corsBuilder.WithOrigins("http://localhost:8775");
+            //corsBuilder.WithOrigins("http://localhost:8775");
             corsBuilder.AllowCredentials();
 
             services.AddCors(options =>
@@ -99,7 +93,7 @@ namespace Aisys.Web.Host
             // Register the Swagger generator, defining one or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "Recruitment API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "Aisys API", Version = "v1" });
             });
 
             ConfigureAuth(services);
@@ -119,17 +113,17 @@ namespace Aisys.Web.Host
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Recruitment API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Aisys API V1");
             });
-
-            app.UseTokenProvider(_tokenProviderOptions);
-            app.UseAuthentication();
-            app.UseMvc();
 
             // ********************
             // USE CORS - might not be required.
             // ********************
             app.UseCors("SiteCorsPolicy");
+
+            app.UseTokenProvider(_tokenProviderOptions);
+            app.UseAuthentication();
+            app.UseMvc();
         }
     }
 }
