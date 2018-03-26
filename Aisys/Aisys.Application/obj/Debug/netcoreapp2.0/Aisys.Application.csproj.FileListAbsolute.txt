@@ -1,0 +1,14 @@
+D:\$tsp-clone\aisys_test\ai_aspnetcore\Aisys\Aisys.Application\bin\Debug\netcoreapp2.0\Aisys.Application.deps.json
+D:\$tsp-clone\aisys_test\ai_aspnetcore\Aisys\Aisys.Application\bin\Debug\netcoreapp2.0\Aisys.Application.dll
+D:\$tsp-clone\aisys_test\ai_aspnetcore\Aisys\Aisys.Application\bin\Debug\netcoreapp2.0\Aisys.Application.pdb
+D:\$tsp-clone\aisys_test\ai_aspnetcore\Aisys\Aisys.Application\bin\Debug\netcoreapp2.0\Aisys.Core.dll
+D:\$tsp-clone\aisys_test\ai_aspnetcore\Aisys\Aisys.Application\bin\Debug\netcoreapp2.0\Aisys.EFCore.dll
+D:\$tsp-clone\aisys_test\ai_aspnetcore\Aisys\Aisys.Application\bin\Debug\netcoreapp2.0\Aisys.Core.pdb
+D:\$tsp-clone\aisys_test\ai_aspnetcore\Aisys\Aisys.Application\bin\Debug\netcoreapp2.0\Aisys.EFCore.pdb
+D:\$tsp-clone\aisys_test\ai_aspnetcore\Aisys\Aisys.Application\obj\Debug\netcoreapp2.0\Aisys.Application.csprojResolveAssemblyReference.cache
+D:\$tsp-clone\aisys_test\ai_aspnetcore\Aisys\Aisys.Application\obj\Debug\netcoreapp2.0\Aisys.Application.csproj.CoreCompileInputs.cache
+D:\$tsp-clone\aisys_test\ai_aspnetcore\Aisys\Aisys.Application\obj\Debug\netcoreapp2.0\Aisys.Application.AssemblyInfoInputs.cache
+D:\$tsp-clone\aisys_test\ai_aspnetcore\Aisys\Aisys.Application\obj\Debug\netcoreapp2.0\Aisys.Application.AssemblyInfo.cs
+D:\$tsp-clone\aisys_test\ai_aspnetcore\Aisys\Aisys.Application\obj\Debug\netcoreapp2.0\Aisys.Application.csproj.CopyComplete
+D:\$tsp-clone\aisys_test\ai_aspnetcore\Aisys\Aisys.Application\obj\Debug\netcoreapp2.0\Aisys.Application.dll
+D:\$tsp-clone\aisys_test\ai_aspnetcore\Aisys\Aisys.Application\obj\Debug\netcoreapp2.0\Aisys.Application.pdb

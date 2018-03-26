@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.0": {
-      "aisys.core/1.0.0": {
+      "Aisys.Core/1.0.0": {
         "runtime": {
           "Aisys.Core.dll": {}
         }
@@ -14,7 +14,7 @@
     }
   },
   "libraries": {
-    "aisys.core/1.0.0": {
+    "Aisys.Core/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
