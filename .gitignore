@@ -1,0 +1,17 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Aisys/.vs/Aisys/v15/Server/sqlite3
+
+/Aisys/Aisys.Application/bin
+/Aisys/Aisys.Application/obj
+
+/Aisys/Aisys.Core/bin
+/Aisys/Aisys.Core/obj
+
+/Aisys/Aisys.EFCore/bin
+/Aisys/Aisys.EFCore/obj
+
+/Aisys/Aisys.Web.Host/bin
+/Aisys/Aisys.Web.Host/obj
