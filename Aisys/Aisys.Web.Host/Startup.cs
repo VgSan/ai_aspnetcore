@@ -14,6 +14,7 @@ using Aisys.EntityFrameworkCore;
 using AutoMapper;
 using Aisys.Application;
 using Microsoft.AspNetCore.Cors.Infrastructure;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace Aisys.Web.Host
 {
@@ -52,7 +53,8 @@ namespace Aisys.Web.Host
             corsBuilder.AllowAnyHeader();
             corsBuilder.AllowAnyMethod();
             corsBuilder.AllowAnyOrigin(); // For anyone access.
-            //corsBuilder.WithOrigins("http://localhost:56573"); // for a specific url. Don't add a forward slash on the end!
+                                          //corsBuilder.WithOrigins("http://localhost:56573"); // for a specific url. Don't add a forward slash on the end!
+            corsBuilder.WithOrigins("http://localhost:8775");
             corsBuilder.AllowCredentials();
 
             services.AddCors(options =>
