@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Aisys.Application;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Principal;
 using System.Threading.Tasks;
 
 namespace Aisys.Web.Host.Authentication.JwtBearer
@@ -31,7 +33,8 @@ namespace Aisys.Web.Host.Authentication.JwtBearer
             };
         }
 
-        public Task Invoke(HttpContext context)
+        public Task Invoke(HttpContext context,
+            IUserService userService)
         {
             if (!context.Request.Path.Equals(_options.Path, StringComparison.Ordinal))
             {
@@ -40,26 +43,27 @@ namespace Aisys.Web.Host.Authentication.JwtBearer
 
 
             if (context.Request.Method.Equals("POST") && context.Request.HasFormContentType)
-                return GenerateToken(context);
+                return GenerateToken(context, userService);
             context.Response.StatusCode = 400;
             return context.Response.WriteAsync("Bad request.");
         }
 
-        private async Task GenerateToken(HttpContext context)
+        private async Task GenerateToken(HttpContext context,
+            IUserService userService)
         {
             var username = context.Request.Form["username"];
             var password = context.Request.Form["password"];
 
-            var identity = await _options.IdentityResolver(username, password);
-            if (identity == null)
-            {
+            UserDto user = userService.GetUsers()
+                .Where(u => u.Email == username && u.Password == password).SingleOrDefault();
+            // Need to be check in DB
+            if (user == null) {
                 context.Response.StatusCode = 400;
                 await context.Response.WriteAsync("Invalid username or password.");
                 return;
             }
 
             var now = DateTime.UtcNow;
-
 
             var claims = new Claim[]
             {
@@ -81,6 +85,7 @@ namespace Aisys.Web.Host.Authentication.JwtBearer
 
             var response = new
             {
+                userId = user.Id,
                 access_token = encodedJwt,
                 expires_in = (int)_options.Expiration.TotalSeconds
             };
@@ -110,11 +115,6 @@ namespace Aisys.Web.Host.Authentication.JwtBearer
             if (options.Expiration == TimeSpan.Zero)
             {
                 throw new ArgumentException("Must be a non-zero TimeSpan.", nameof(TokenProviderOptions.Expiration));
-            }
-
-            if (options.IdentityResolver == null)
-            {
-                throw new ArgumentNullException(nameof(TokenProviderOptions.IdentityResolver));
             }
 
             if (options.SigningCredentials == null)

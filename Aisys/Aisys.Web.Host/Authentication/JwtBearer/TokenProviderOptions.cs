@@ -35,12 +35,7 @@ namespace Aisys.Web.Host.Authentication.JwtBearer
         /// The signing key to use when generating tokens.
         /// </summary>
         public SigningCredentials SigningCredentials { get; set; }
-
-        /// <summary>
-        /// Resolves a user identity given a username and password.
-        /// </summary>
-        public Func<string, string, Task<ClaimsIdentity>> IdentityResolver { get; set; }
-
+        
         /// <summary>
         /// Generates a random value (nonce) for each generated token.
         /// </summary>

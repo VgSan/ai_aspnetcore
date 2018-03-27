@@ -9,6 +9,11 @@ namespace Aisys.EntityFrameworkCore
     public class AisysDbContext : DbContext
     {
         /* Define an IDbSet for each entity of the application */
+        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<UserToken> UserToken { get; set; }
+
+        public virtual DbSet<Role> Role { get; set; }
+        public virtual DbSet<UserRole> UserRole { get; set; }
 
         public virtual DbSet<Applicant> Applicant { get; set; }
         public virtual DbSet<Experience> Experience { get; set; }

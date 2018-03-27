@@ -32,17 +32,5 @@ namespace Aisys.Web.Host
                         _tokenValidationParameters);
                 });
         }
-
-        private Task<ClaimsIdentity> GetIdentity(string username, string password)
-        {
-            // Need to be check in DB
-            if (username == "test@test.com" && password == "test123")
-            {
-                return Task.FromResult(new ClaimsIdentity(new GenericIdentity(username, "Token"), new Claim[] { }));
-            }
-
-            // Credentials are invalid, or account doesn't exist
-            return Task.FromResult<ClaimsIdentity>(null);
-        }
     }
 }

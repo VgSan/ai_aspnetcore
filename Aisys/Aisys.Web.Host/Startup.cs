@@ -48,8 +48,7 @@ namespace Aisys.Web.Host
                 Path = Configuration.GetSection("TokenAuthentication:TokenPath").Value,
                 Audience = Configuration.GetSection("TokenAuthentication:Audience").Value,
                 Issuer = Configuration.GetSection("TokenAuthentication:Issuer").Value,
-                SigningCredentials = new SigningCredentials(_signingKey, SecurityAlgorithms.HmacSha256),
-                IdentityResolver = GetIdentity
+                SigningCredentials = new SigningCredentials(_signingKey, SecurityAlgorithms.HmacSha256)
             };
         }
 
@@ -62,6 +61,8 @@ namespace Aisys.Web.Host
 
             services.AddDbContext<AisysDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IUserService, UserService>();
 
             services.AddScoped<IApplicantService, ApplicantService>();
             services.AddScoped<IApplicantRepository, ApplicantRepository>();
