@@ -43,7 +43,17 @@ GO
 --select * from [dbo].[UserRole]
 --GO
 
+---- Seeding employee
+--INSERT INTO [dbo].[Employee] ([AddedDate] ,[Address] ,[DateOfBirth] ,[FirstName] ,[IsActive] ,[LastName] ,[MailAddress] ,[MobileNo] ,[ModifiedDate] ,[PhoneNo])
+--     VALUES ('3/27/2018', 'Sidney, Ausi', '3/27/1990', 'VgSan', 1, 'Magen', 'Vageesan2009@gmail.com', 0094774104047, '3/27/2018', 0094774104047)
+--INSERT INTO [dbo].[Employee] ([AddedDate] ,[Address] ,[DateOfBirth] ,[FirstName] ,[IsActive] ,[LastName] ,[MailAddress] ,[MobileNo] ,[ModifiedDate] ,[PhoneNo])
+--     VALUES ('3/27/2018', 'Sidney, Ausi', '3/27/1990', 'Isuru', 1, 'Perera', 'perera@gmail.com', 0094774104047, '3/27/2018', 0094771234567)
+--INSERT INTO [dbo].[Employee] ([AddedDate] ,[Address] ,[DateOfBirth] ,[FirstName] ,[IsActive] ,[LastName] ,[MailAddress] ,[MobileNo] ,[ModifiedDate] ,[PhoneNo])
+--     VALUES ('3/27/2018', 'Sidney, Ausi', '3/27/1990', 'Hiree', 1, 'James', 'hi@hotmail.com', 0094774104047, '3/27/2018', 0094114152866)
+--GO
 
+--select * from [dbo].[Employee]
+--GO
 
 
 

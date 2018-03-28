@@ -15,6 +15,8 @@ namespace Aisys.EntityFrameworkCore
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<UserRole> UserRole { get; set; }
 
+        public virtual DbSet<Employee> Employee { get; set; }
+
         public virtual DbSet<Applicant> Applicant { get; set; }
         public virtual DbSet<Experience> Experience { get; set; }
 

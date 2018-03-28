@@ -11,9 +11,10 @@ using System;
 namespace Aisys.EFCore.Migrations
 {
     [DbContext(typeof(AisysDbContext))]
-    partial class AisysDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180328064326_V5")]
+    partial class V5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
