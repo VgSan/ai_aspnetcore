@@ -11,9 +11,10 @@ using System;
 namespace Aisys.EFCore.Migrations
 {
     [DbContext(typeof(AisysDbContext))]
-    partial class AisysDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180404112117_V9")]
+    partial class V9
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -149,6 +150,8 @@ namespace Aisys.EFCore.Migrations
 
                     b.Property<DateTime>("AddedDate");
 
+                    b.Property<int?>("ClientId");
+
                     b.Property<int?>("EmployeeId");
 
                     b.Property<bool>("IsActive");
@@ -160,6 +163,8 @@ namespace Aisys.EFCore.Migrations
                     b.Property<string>("Status");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
 
                     b.HasIndex("EmployeeId");
 
@@ -384,6 +389,10 @@ namespace Aisys.EFCore.Migrations
 
             modelBuilder.Entity("Aisys.Core.OrderProcess", b =>
                 {
+                    b.HasOne("Aisys.Core.Client", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId");
+
                     b.HasOne("Aisys.Core.Employee", "Employee")
                         .WithMany()
                         .HasForeignKey("EmployeeId");

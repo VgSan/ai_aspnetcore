@@ -11,25 +11,17 @@ namespace Aisys.Application
         public MappingProfile()
         {
             // Add as many of these lines as you need to map your objects
-            CreateMap<Applicant, ApplicantDto>()
+
+            CreateMap<Employee, EmployeeDto>()
                 .ReverseMap();
-            CreateMap<Applicant, ApplicantInput>()
+            CreateMap<Employee, EmployeeInput>()
                 .ReverseMap();
 
-            CreateMap<Experience, ExperienceDto>()
+            CreateMap<User, UserDto>()
                 .ReverseMap();
-            CreateMap<Experience, ExperienceInput>()
+            CreateMap<User, UserInput>()
                 .ReverseMap();
-
-            CreateMap<Workflow, WorkflowDto>()
-                .ReverseMap();
-            CreateMap<Workflow, WorkflowInput>()
-                .ReverseMap();
-
-            CreateMap<ApplicantWorkflow, ApplicantWorkflowDto>()
-                .ReverseMap();
-            CreateMap<ApplicantWorkflow, ApplicantWorkflowInput>()
-                .ReverseMap();
+            
         }
     }
 }

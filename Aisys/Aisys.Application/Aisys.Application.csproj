@@ -13,4 +13,9 @@
     <ProjectReference Include="..\Aisys.EFCore\Aisys.EFCore.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Client\" />
+    <Folder Include="Product\" />
+  </ItemGroup>
+
 </Project>

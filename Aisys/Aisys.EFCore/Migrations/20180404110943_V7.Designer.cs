@@ -11,9 +11,10 @@ using System;
 namespace Aisys.EFCore.Migrations
 {
     [DbContext(typeof(AisysDbContext))]
-    partial class AisysDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180404110943_V7")]
+    partial class V7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,7 +92,7 @@ namespace Aisys.EFCore.Migrations
 
                     b.Property<DateTime>("AddedDate");
 
-                    b.Property<int?>("ClientId");
+                    b.Property<string>("ClientNo");
 
                     b.Property<bool>("IsActive");
 
@@ -103,8 +104,6 @@ namespace Aisys.EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId");
-
                     b.ToTable("Order");
                 });
 
@@ -113,11 +112,7 @@ namespace Aisys.EFCore.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("ActionCode");
-
                     b.Property<DateTime>("ActionDate");
-
-                    b.Property<string>("ActionType");
 
                     b.Property<DateTime>("AddedDate");
 
@@ -131,13 +126,9 @@ namespace Aisys.EFCore.Migrations
 
                     b.Property<DateTime>("ModifiedDate");
 
-                    b.Property<int?>("OrderId");
-
                     b.Property<string>("OrderNo");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
 
                     b.ToTable("OrderDetail");
                 });
@@ -149,21 +140,19 @@ namespace Aisys.EFCore.Migrations
 
                     b.Property<DateTime>("AddedDate");
 
-                    b.Property<int?>("EmployeeId");
+                    b.Property<string>("ClientNo");
+
+                    b.Property<string>("EmployeeNo");
 
                     b.Property<bool>("IsActive");
 
                     b.Property<DateTime>("ModifiedDate");
 
-                    b.Property<int?>("OrderId");
+                    b.Property<string>("OrderNo");
 
                     b.Property<string>("Status");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.HasIndex("OrderId");
 
                     b.ToTable("OrderProcess");
                 });
@@ -251,11 +240,11 @@ namespace Aisys.EFCore.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int?>("ServiceGroupId");
+                    b.Property<int?>("ProductGroupId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ServiceGroupId");
+                    b.HasIndex("ProductGroupId");
 
                     b.ToTable("Service");
                 });
@@ -368,31 +357,6 @@ namespace Aisys.EFCore.Migrations
                     b.ToTable("UserToken");
                 });
 
-            modelBuilder.Entity("Aisys.Core.Order", b =>
-                {
-                    b.HasOne("Aisys.Core.Client", "Client")
-                        .WithMany()
-                        .HasForeignKey("ClientId");
-                });
-
-            modelBuilder.Entity("Aisys.Core.OrderDetail", b =>
-                {
-                    b.HasOne("Aisys.Core.Order")
-                        .WithMany("OrderDetails")
-                        .HasForeignKey("OrderId");
-                });
-
-            modelBuilder.Entity("Aisys.Core.OrderProcess", b =>
-                {
-                    b.HasOne("Aisys.Core.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId");
-
-                    b.HasOne("Aisys.Core.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId");
-                });
-
             modelBuilder.Entity("Aisys.Core.Product", b =>
                 {
                     b.HasOne("Aisys.Core.ProductGroup", "ProductGroup")
@@ -409,9 +373,9 @@ namespace Aisys.EFCore.Migrations
 
             modelBuilder.Entity("Aisys.Core.Service", b =>
                 {
-                    b.HasOne("Aisys.Core.ServiceGroup", "ServiceGroup")
+                    b.HasOne("Aisys.Core.ProductGroup", "ProductGroup")
                         .WithMany()
-                        .HasForeignKey("ServiceGroupId");
+                        .HasForeignKey("ProductGroupId");
                 });
 
             modelBuilder.Entity("Aisys.Core.ServiceGroup", b =>

@@ -5,10 +5,10 @@ using System.Text;
 
 namespace Aisys.Core
 {
-    [Table("Workflow")]
-    public class Workflow : BaseEntity
+    [Table("Template")]
+    public class Template : BaseEntity
     {
-        public string ProcessName { get; set; }
-        public int ProcessOrder { get; set; }
+        public string Code { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -64,14 +64,7 @@ namespace Aisys.Web.Host
 
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
-
-            services.AddScoped<IApplicantService, ApplicantService>();
-            services.AddScoped<IApplicantRepository, ApplicantRepository>();
-
-            services.AddScoped<IExperienceService, ExperienceService>();
-            services.AddScoped<IWorkflowService, WorkflowService>();
-            services.AddScoped<IApplicantWorkflowService, ApplicantWorkflowService>();
-
+            
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             services.AddMvc();

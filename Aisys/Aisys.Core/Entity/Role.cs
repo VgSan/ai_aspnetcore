@@ -16,7 +16,7 @@ namespace Aisys.Core
     [Table("UserRole")]
     public class UserRole : BaseEntity
     {
-        public User User { get; set; }
+        public string Email { get; set; }
         public Role Role { get; set; }
     }
 }
