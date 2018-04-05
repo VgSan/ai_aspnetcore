@@ -34,14 +34,33 @@ namespace Aisys.Application
             await _employeeRepository.Create(result);
         }
 
-        public async Task DeleteEmployee(int EmployeeId)
+        public async Task DeleteEmployee(List<int> ids)
         {
-            await _employeeRepository.Delete(EmployeeId);
+            foreach (int id in ids)
+            {
+                Employee emp = _employeeRepository.GetById(id);
+                if (emp != null)
+                {
+                    //emp.IsActive = false;
+                    //await _employeeRepository.Update(emp.Id, emp);
+                    await _employeeRepository.Delete(id);
+                }
+            }
+        }
+
+        public EmployeeDto GetEmployee(int id)
+        {
+            Employee employee = _employeeRepository.GetAll()
+                .Where(e => e.Id == id && e.IsActive == true).FirstOrDefault();
+            var result = _mapper.Map<EmployeeDto>(employee);
+
+            return result;
         }
 
         public List<EmployeeDto> GetEmployees()
         {
-            List<Employee> listOfExperince = _employeeRepository.GetAll().ToList();
+            List<Employee> listOfExperince = _employeeRepository.GetAll()
+                .Where(e => e.IsActive == true).ToList();
             var result = _mapper.Map<List<EmployeeDto>>(listOfExperince);
 
             return result;
@@ -50,9 +69,21 @@ namespace Aisys.Application
         public async Task UpdateEmployee(EmployeeDto input)
         {
             Employee result = _mapper.Map<Employee>(input);
+            Employee exsEmp = _employeeRepository.GetById(input.Id);
+
             result.ModifiedDate = DateTime.Now;
 
             await _employeeRepository.Update(input.Id, result);
+
+            User user = _userRepository.GetAll().Where(u => u.Email == exsEmp.Email).FirstOrDefault();
+            if(user != null)
+            {
+                user.Email = result.Email;
+                await _userRepository.Update(user.Id, user);
+            } else
+            {
+                await _userRepository.Create(new User() { Email = result.Email, Password = "1234" });
+            }
         }
     }
 }

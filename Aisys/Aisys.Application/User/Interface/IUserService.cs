@@ -11,6 +11,6 @@ namespace Aisys.Application
         List<UserDto> GetUsers();
         Task CreateUser(UserInput input);
         Task UpdateUser(UserDto input);
-        Task DeleteUser(int UserId);
+        Task DeleteUser(List<int> ids);
     }
 }

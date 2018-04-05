@@ -27,9 +27,18 @@ namespace Aisys.Application
             await _userRepository.Create(result);
         }
 
-        public async Task DeleteUser(int UserId)
+        public async Task DeleteUser(List<int> ids)
         {
-            await _userRepository.Delete(UserId);
+            foreach (int id in ids)
+            {
+                User usr = _userRepository.GetById(id);
+                if (usr != null)
+                {
+                    //usr.IsActive = false;
+                    //await _userRepository.Update(usr.Id, usr);
+                    await _userRepository.Delete(id);
+                }
+            }
         }
 
         public List<UserDto> GetUsers()

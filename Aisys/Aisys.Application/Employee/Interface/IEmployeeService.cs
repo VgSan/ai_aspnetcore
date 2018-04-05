@@ -7,9 +7,10 @@ namespace Aisys.Application
 {
     public interface IEmployeeService
     {
+        EmployeeDto GetEmployee(int id);
         List<EmployeeDto> GetEmployees();
         Task CreateEmployee(EmployeeInput input);
         Task UpdateEmployee(EmployeeDto input);
-        Task DeleteEmployee(int EmployeeId);
+        Task DeleteEmployee(List<int> ids);
     }
 }

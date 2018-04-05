@@ -42,7 +42,7 @@ namespace Aisys.Web.Host
                 // If you want to allow a certain amount of clock drift, set that here:
                 ClockSkew = TimeSpan.Zero
             };
-            
+
             _tokenProviderOptions = new TokenProviderOptions
             {
                 Path = Configuration.GetSection("TokenAuthentication:TokenPath").Value,
@@ -64,10 +64,14 @@ namespace Aisys.Web.Host
 
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
-            
+
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.ContractResolver
+                    = new Newtonsoft.Json.Serialization.DefaultContractResolver();
+            }); ;
 
             // ********************
             // Setup CORS
@@ -77,7 +81,7 @@ namespace Aisys.Web.Host
             corsBuilder.AllowAnyMethod();
             corsBuilder.AllowAnyOrigin(); // For anyone access.
                                           //corsBuilder.WithOrigins("http://localhost:56573"); // for a specific url. Don't add a forward slash on the end!
-            //corsBuilder.WithOrigins("http://localhost:8775");
+                                          //corsBuilder.WithOrigins("http://localhost:8775");
             corsBuilder.AllowCredentials();
 
             services.AddCors(options =>

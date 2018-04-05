@@ -33,21 +33,22 @@ namespace Aisys.Web.Host.Controllers
         }
 
         [HttpPost("CreateUser")]
-        public async Task CreateUser(UserInput input)
+        public async Task CreateUser([FromBody] UserInput input)
         {
             await _userService.CreateUser(input);
         }
 
-        [HttpPost("UpdateUser")]
-        public async Task UpdateUser(UserDto input)
+        [HttpPut("UpdateUser")]
+        public async Task UpdateUser([FromBody] UserDto input)
         {
             await _userService.UpdateUser(input);
         }
 
-        [HttpPost("DeleteUser")]
-        public async Task DeleteUser(int UserId)
+        [HttpDelete("DeleteUser")]
+        public async Task DeleteUser(string ids)
         {
-            await _userService.DeleteUser(UserId);
+            List<int> idsArr = ids.Split(',').Select(int.Parse).ToList();
+            await _userService.DeleteUser(idsArr);
         }
     }
 }

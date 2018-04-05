@@ -25,6 +25,13 @@ namespace Aisys.Web.Host.Controllers
             _employeeService = employeeService;
         }
 
+        [HttpGet("GetEmployee")]
+        public EmployeeDto GetEmployee(int id)
+        {
+            EmployeeDto employee = _employeeService.GetEmployee(id);
+            return employee;
+        }
+
         [HttpGet("GetEmployees")]
         public List<EmployeeDto> GetEmployees()
         {
@@ -33,21 +40,22 @@ namespace Aisys.Web.Host.Controllers
         }
 
         [HttpPost("CreateEmployee")]
-        public async Task CreateEmployee(EmployeeInput input)
+        public async Task CreateEmployee([FromBody] EmployeeInput input)
         {
             await _employeeService.CreateEmployee(input);
         }
 
-        [HttpPost("UpdateEmployee")]
-        public async Task UpdateEmployee(EmployeeDto input)
+        [HttpPut("UpdateEmployee")]
+        public async Task UpdateEmployee([FromBody] EmployeeDto input)
         {
             await _employeeService.UpdateEmployee(input);
         }
 
-        [HttpPost("DeleteEmployee")]
-        public async Task DeleteEmployee(int EmployeeId)
+        [HttpDelete("DeleteEmployee")]
+        public async Task DeleteEmployee(string ids)
         {
-            await _employeeService.DeleteEmployee(EmployeeId);
+            List<int> idsArr = ids.Split(',').Select(int.Parse).ToList();
+            await _employeeService.DeleteEmployee(idsArr);
         }
     }
 }
